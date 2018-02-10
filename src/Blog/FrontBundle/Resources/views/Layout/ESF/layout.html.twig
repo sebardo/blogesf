@@ -44,7 +44,7 @@
         <div id="wrapper">
             <div id="header">
                 <h1>
-                    <a href="http://www.englishsummerfun.com" title="Kids&Us"><img src="{{ asset('bundles/front/images/kidsandus-logo.png') }}" alt="Kids&Us"></a>
+                    <a href="http://www.englishsummerfun.com" title="Kids&Us"><img src="{{ asset('bundles/front/images/kidsandus_2018.png') }}" alt="Kids&Us"></a>
                 </h1>
                 <div id="languages">
                     <a href="{{ path("blog_list", {"_locale": "ca"}) }}" title="{{ 'menu.catalan_version' | trans }}">{{ 'menu.catalan' | trans }}</a> |
@@ -65,7 +65,7 @@
                     <li class="nav5"><a href="{{ path('blog_list') }}" class="active" title="Blog">Blog</a></li>
                 </ul>
             </div>
-            <div id="container">
+            <div id="container" style="box-shadow: 0px 0px 37px 0px #777;">
                 {% for flashMessage in app.session.flashbag.get('success') %}
                     <div class="alert">
                         {{ flashMessage | raw }}
@@ -75,7 +75,7 @@
                 {% endblock %}
             </div>
             <div id="footer">
-                <img src="{{ asset('bundles/front/images/kidsandus-logo-mini.png') }}" alt="Kids&Us"> · C/ Canonge Montanyà, 1-5 baixos · 08242 Manresa (Barcelona) · (+34) 93 875 33 45 · <a href="mailto:info@kidsandus.es" title="info@kidsandus.es">info@kidsandus.es</a> · <a href="http://www.kidsandus.es" title="www.kidsandus.es">www.kidsandus.es</a>
+                <img src="{{ asset('bundles/front/images/kidsandus3.png') }}" alt="Kids&Us"> · C/ Canonge Montanyà, 1-5 baixos · 08242 Manresa (Barcelona) · (+34) 93 875 33 45 · <a href="mailto:info@kidsandus.es" title="info@kidsandus.es">info@kidsandus.es</a> · <a href="http://www.kidsandus.es" title="www.kidsandus.es">www.kidsandus.es</a>
             </div>
         </div>
 
