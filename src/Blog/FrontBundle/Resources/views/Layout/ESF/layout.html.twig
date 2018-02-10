@@ -1,0 +1,86 @@
+{% set route = app.request.attributes.get('_route') %}
+<!DOCTYPE html lang="{{ app.request.locale }}">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex, nofollow">
+        <title>{% block title %}Blog - English Summer Fun by Kids&Us{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}{{ 'meta.description' | trans }}{% endblock %}" />
+        <link rel="canonical" href="{{ app.request.uri }}"/>
+
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+
+        <!-- OpenGraph -->
+        <meta property="og:title" content="{% block meta_og_title %}English Summer Fun Blog{% endblock %}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ app.request.uri }}" />
+        <meta property="og:image" content="{% block meta_og_image %}{{ app.request.scheme ~ '://' ~ app.request.host ~ asset('bundles/front/images/kidsandus-logo.png') }}{% endblock %}" />
+        <meta property="og:description" content="{% block meta_og_description %}{{ 'meta.description' | trans }}{% endblock %}" />
+        <meta name="generator" content="Symfony 2 (http://symfony.com)" />
+        <meta name="dcterms.type" content="Text" />
+        <meta name="dcterms.format" content="text/html" />
+        <meta name="geo.placename" content="Carrer del Canonge Montanyà, 1-5, 08242 Manresa, Barcelona, España" />
+        <meta name="geo.position" content="41.7268990;1.8219110" />
+        <meta name="geo.region" content="ES-Catalunya" />
+        <meta name="ICBM" content="41.7268990, 1.8219110" />
+        <meta name="DC.language" content="{{ app.request.locale }}" />
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset("bundles/front/css/fonts.css") }}">
+        {% endblock %}
+
+        {% stylesheets
+            'bundles/front/less/main.less'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    </head>
+
+    <body {% block body_class %}class="login"{% endblock %}>
+
+        <div id="wrapper">
+            <div id="header">
+                <h1>
+                    <a href="http://www.englishsummerfun.com" title="Kids&Us"><img src="{{ asset('bundles/front/images/kidsandus-logo.png') }}" alt="Kids&Us"></a>
+                </h1>
+                <div id="languages">
+                    <a href="{{ path("blog_list", {"_locale": "ca"}) }}" title="{{ 'menu.catalan_version' | trans }}">{{ 'menu.catalan' | trans }}</a> |
+                    <a href="{{ path("blog_list", {"_locale": "es"}) }}" title="{{ 'menu.spanish_version' | trans }}">{{ 'menu.spanish' | trans }}</a>
+                </div>
+                <ul id="navigation">
+                    {% if app.request.locale == 'es' %}
+                        <li class="nav1"><a href="http://www.englishsummerfun.com/es/" title="{{ 'labels.home' | trans }}">{{ 'labels.home' | trans }}</a></li>
+                        <li class="nav2"><a href="http://www.englishsummerfun.com/actividades/cuentos-y-canciones" title="{{ 'menu.activities' | trans }}">{{ 'menu.activities' | trans }}</a></li>
+                        <li class="nav3"><a href="http://www.englishsummerfun.com/centros" title="{{ 'menu.where' | trans }}">{{ 'menu.where' | trans }}</a></li>
+                        <li class="nav4"><a href="https://www.englishsummerfun.com/inscripciones" title="{{ 'menu.inscriptions' | trans }}">{{ 'menu.inscriptions' | trans }}</a></li>
+                    {% else %}
+                        <li class="nav1"><a href="http://www.englishsummerfun.com/ca/" title="{{ 'labels.home' | trans }}">{{ 'labels.home' | trans }}</a></li>
+                        <li class="nav2"><a href="http://www.englishsummerfun.com/activitats/contes-i-cancons" title="{{ 'menu.activities' | trans }}">{{ 'menu.activities' | trans }}</a></li>
+                        <li class="nav3"><a href="http://www.englishsummerfun.com/centres" title="{{ 'menu.where' | trans }}">{{ 'menu.where' | trans }}</a></li>
+                        <li class="nav4"><a href="https://www.englishsummerfun.com/inscripcions" title="{{ 'menu.inscriptions' | trans }}">{{ 'menu.inscriptions' | trans }}</a></li>
+                    {% endif %}
+                    <li class="nav5"><a href="{{ path('blog_list') }}" class="active" title="Blog">Blog</a></li>
+                </ul>
+            </div>
+            <div id="container">
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert">
+                        {{ flashMessage | raw }}
+                    </div>
+                {% endfor %}
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div id="footer">
+                <img src="{{ asset('bundles/front/images/kidsandus-logo-mini.png') }}" alt="Kids&Us"> · C/ Canonge Montanyà, 1-5 baixos · 08242 Manresa (Barcelona) · (+34) 93 875 33 45 · <a href="mailto:info@kidsandus.es" title="info@kidsandus.es">info@kidsandus.es</a> · <a href="http://www.kidsandus.es" title="www.kidsandus.es">www.kidsandus.es</a>
+            </div>
+        </div>
+
+        {% block javascripts %}
+            <script src="{{ asset("bundles/front/js/jquery.min.js") }}"></script>
+        {% endblock %}
+    </body>
+</html>

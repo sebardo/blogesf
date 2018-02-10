@@ -1,0 +1,1 @@
+[08-Feb-2018 22:18:05 Europe/Madrid] PHP Fatal error:  Cannot redeclare class SessionHandlerInterface in /home/infodevelop/public_html/blogesf/app/cache/prod/classes.php on line 385

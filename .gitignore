@@ -1,0 +1,16 @@
+/web/bundles/
+app/logs/**
+/app/config/parameters.yml
+uploads/
+
+/web/uploads/
+app/cache/**
+/nbproject/
+/.idea/
+/app/sessions/
+.settings
+.project
+.DS_Store
+.buildpath
+rsync_exclude.txt
+/web/.htaccess
